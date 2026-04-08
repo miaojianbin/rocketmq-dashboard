@@ -49,9 +49,11 @@ public class LoginServiceImplTest {
     @Test
     public void shouldRedirectToContextPathLoginPageWhenAuthRequired() throws Exception {
         MockHttpServletRequest request = new MockHttpServletRequest();
+        request.setScheme("http");
+        request.setServerName("localhost");
+        request.setServerPort(8080);
         request.setContextPath("/rocketmq-console");
         request.setRequestURI("/rocketmq-console/topic/list.query");
-        request.setRequestURL(new StringBuffer("http://localhost:8080/rocketmq-console/topic/list.query"));
         request.setQueryString("page=1");
 
         MockHttpServletResponse response = new MockHttpServletResponse();
