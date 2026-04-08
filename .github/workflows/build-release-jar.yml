@@ -33,6 +33,8 @@ jobs:
           cache: maven
 
       - name: Build jar
+        env:
+          CI: "false"
         run: mvn -B -DskipTests package
 
       - name: Find jar
