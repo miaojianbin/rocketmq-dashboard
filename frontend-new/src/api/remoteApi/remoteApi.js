@@ -15,8 +15,19 @@
  * limitations under the License.
  */
 
+const getContextPath = () => {
+    const {pathname} = window.location;
+    if (!pathname || pathname === '/') {
+        return '';
+    }
+    return pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
+};
+
+const contextPath = getContextPath();
+
 const appConfig = {
-    apiBaseUrl: process.env.REACT_APP_API_BASE_URL || window.location.origin
+    contextPath,
+    apiBaseUrl: process.env.REACT_APP_API_BASE_URL || `${window.location.origin}${contextPath}`
 };
 
 let _redirectHandler = null;
@@ -32,6 +43,11 @@ const remoteApi = {
             endpoint = endpoint.substring(1);
         }
         return `${appConfig.apiBaseUrl}/${endpoint}`;
+    },
+
+    buildAppHashUrl: (route = '/') => {
+        const normalizedRoute = route.startsWith('/') ? route : `/${route}`;
+        return `${window.location.origin}${appConfig.contextPath}/#${normalizedRoute}`;
     },
 
 

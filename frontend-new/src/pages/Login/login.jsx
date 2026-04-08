@@ -33,7 +33,7 @@ const Login = () => {
                 messageApi.success(t.LOGIN_SUCCESS);
                 window.localStorage.setItem("username", res.data.loginUserName);
                 window.localStorage.setItem("userrole", res.data.loginUserRole);
-                window.location.href = '/';
+                window.location.href = remoteApi.buildAppHashUrl('/');
             } else {
                 messageApi.error(res.message || t.LOGIN_FAILED);
             }

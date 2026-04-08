@@ -47,6 +47,7 @@ const Navbar = ({rmqVersion = true, showAcl = true}) => {
         remoteApi.logout().then(res => {
             if (res.status === 0) {
                 window.localStorage.removeItem("username");
+                window.localStorage.removeItem("userrole");
                 window.localStorage.removeItem("userRole");
                 window.localStorage.removeItem("token");
                 window.localStorage.removeItem("rmqVersion");
