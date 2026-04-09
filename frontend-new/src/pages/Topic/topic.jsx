@@ -37,7 +37,7 @@ const DeployHistoryList = () => {
     const [filterDelay, setFilterDelay] = useState(false);
     const [filterFifo, setFilterFifo] = useState(false);
     const [filterTransaction, setFilterTransaction] = useState(false);
-    const [filterUnspecified, setFilterUnspecified] = useState(false);
+    const [filterUnspecified, setFilterUnspecified] = useState(true);
     const [filterRetry, setFilterRetry] = useState(false);
     const [filterDLQ, setFilterDLQ] = useState(false);
     const [filterSystem, setFilterSystem] = useState(false);
